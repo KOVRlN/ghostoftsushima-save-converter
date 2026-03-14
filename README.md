@@ -1,5 +1,6 @@
-```markdown
 # Ghost of Tsushima — Save File Converter
+
+> **Note:** This tool has only been tested by me and one other independent (PS4) tester. If the tool does not work as intended, please submit an issue.
 
 A command-line tool to convert save files between the latest (2.24) PS4 and PC versions of Ghost of Tsushima (Director's Cut). Allows you to continue your progress across platforms without starting over.
 
@@ -33,7 +34,6 @@ Content size:  334,440 bytes
 Checksum:      valid
 Platform:      PS4
 Platform marker (slot 2): 7e8a516a45ed4447
-
 ```
 
 ### Standard Conversion
@@ -62,8 +62,8 @@ The output file must then be encrypted / imported into a PS4 save before the PS4
 
 Option allows you to bypass version checks and manually set the output version. This is useful if you are dealing with unsupported/unexpected save versions or if a future update changes the tool's expected version numbers.
 
-* **`-f` or `--force**`: Ignores input version and platform marker mismatches. The tool will warn you but proceed with the conversion anyway.
-* **`-t <version>` or `--target-version <version>**`: Explicitly sets the save version written to the header of the output file. By default, the tool safely assumes version `49` for PC and `48` for PS4.
+* `-f` or `--force`: Ignores input version and platform marker mismatches. The tool will warn you but proceed with the conversion anyway.
+* `-t <version>` or `--target-version <version>`: Explicitly sets the save version written to the header of the output file. By default, the tool safely assumes version `49` for PC and `48` for PS4.
 
 **Example — Forcing conversion of an unknown version to a specific PC version (e.g., v50):**
 
@@ -103,7 +103,7 @@ The file is already in a bad state before conversion. Try recovering from a back
 
 ## How it works
 
-For the technically curious, see TECHNICAL.md for a writeup of the reverse engineering process: how the format was discovered, what each field means, and the checksum formula.
+For the technically curious, see [TECHNICAL.md](TECHNICAL.md) for a writeup of the reverse engineering process: how the format was discovered, what each field means, and the checksum formula.
 
 ---
 
@@ -115,6 +115,4 @@ Bug reports and pull requests are welcome. If the game updates and breaks the fo
 
 ## License
 
-MIT License. See LICENSE for details.
-
-```
+MIT License. See the [LICENSE](LICENSE) file for details.
