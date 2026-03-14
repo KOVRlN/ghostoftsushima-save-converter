@@ -1,5 +1,4 @@
 
-```markdown
 # Technical Notes — Save Format Reverse Engineering
 
 This document describes the Ghost of Tsushima save file format as discovered through binary analysis of six save files across PS4 and PC platforms.
@@ -12,7 +11,6 @@ All saves share a common 16-byte header, followed by an unknown 32-byte block, f
 
 
 ```
-
 Offset   Size  Field
 
 ---
@@ -29,7 +27,6 @@ Offset   Size  Field
 0x188     8    Slot 2: platform marker (see below)
 0x190     8    Slot 3: PC-only constant — bfe1bd115c5c51a2 (absent on PS4)
 0x198   ...    Game data begins here (v48 PS4) / 0x198 (v49 PC)
-
 ```
 
 ---
@@ -40,10 +37,8 @@ The value at offset `0x188` (slot 2) is what the game checks when loading a save
 
 
 ```
-
 PS4:  7e8a516a45ed4447
 PC:   d5cf106b395e5d10
-
 ```
 
 Slot 3 (`bfe1bd115c5c51a2`) is present only in PC saves and also constant. Its exact purpose is unknown — it may be a secondary platform identifier or a PC build-specific value. It must be present for the game to accept the save on PC, and must be absent on PS4.
@@ -74,9 +69,7 @@ The checksum at `0x08` is a simple sum of bytes. The formula, verified against s
 
 
 ```
-
 checksum = sum(data[0x10 : content_size]) + content_size + magic + version
-
 ```
 
 Where:
@@ -112,5 +105,3 @@ The approach:
 5. Derive the checksum formula empirically using the known-good checksum values as constraints
 
 No game code was disassembled or decompiled. The entire analysis was based on observable patterns in the binary data.
-
-```
